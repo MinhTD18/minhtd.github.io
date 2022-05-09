@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Python custom formatting</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="Python f-strings use a formatting mini-language, the same as the older .format() function. After the colon comes short specifications for how to..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">MinhTD's Blogs</a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/python-custom-formatting.html" rel="bookmark"
+           title="Permalink to Python custom formatting">Python custom formatting</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-02-10T00:00:00-05:00">
+                Published: Thu 10 February 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/minhtd.html">minhtd</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->      <p>Python f-strings use a formatting mini-language, the same as the older .format() function. After the colon comes short specifications for how to format the value:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; word = &quot;Hello&quot;
+&gt;&gt;&gt; f&quot;{word:/^20}&quot;
+&#39;///////Hello////////&#39;
+&gt;&gt;&gt; amt = 12345678
+&gt;&gt; f&quot;{amt:20,}&quot;
+&#39;          12,345,678&#39;
+</code></pre></div>
+
+<p>Datetimes can use strftime syntax:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; f&quot;{now:%Y-%m on day %d}&quot;
+&#39;2022-04 on day 14&#39;
+</code></pre></div>
+
+<p>The reason datetime uses different formatting specs than strings is because datetime defines its own <strong>format</strong> method. Any object can define its own formatting mini-language. F-strings and .format() will use the <strong>format</strong> method on an object, and pass it the formatting directives being used:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nv">class</span> <span class="nv">Confused</span>:
+...     <span class="nv">def</span> <span class="nv">__format__</span><span class="ss">(</span><span class="nv">self</span>, <span class="nv">fmt</span><span class="ss">)</span>:
+...         <span class="k">return</span> <span class="nv">f</span><span class="s2">&quot;</span><span class="s">What is {fmt}?</span><span class="s2">&quot;</span>
+...
+<span class="o">&gt;&gt;&gt;</span> <span class="nv">c</span> <span class="o">=</span> <span class="nv">Confused</span><span class="ss">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nv">f</span><span class="s2">&quot;</span><span class="s">{c:xyz12}</span><span class="s2">&quot;</span>
+<span class="s1">&#39;</span><span class="s">What is xyz12?</span><span class="s1">&#39;</span>
+</code></pre></div>
+
+<p>Of course, <strong>format</strong> can be used for more useful formatting than Confused is doing...</p>
+<p>Geographic latitude and longitude are conventionally presented in a few different formats: degrees; or degrees and minutes; or degrees, minutes and seconds. Then the numbers can have varying number of decimal places, and sometimes the units are represented by symbols.</p>
+<p>Here’s an implementation of those possibilities in <strong>format</strong>. The format string starts with “d”, “dm”, or “dms” to indicate the basic format. The number of decimal places can be specified with “.N”. Finally, symbols can be added, either plain or fancy, by adding a quote or minute symbol:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dataclasses</span><span class="o">,</span> <span class="nn">re</span>
+
+<span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+<span class="k">class</span> <span class="nc">LatLong</span><span class="p">:</span>
+    <span class="n">lat</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">long</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="p">):</span>
+        <span class="n">dms</span><span class="p">,</span> <span class="n">nfmt</span><span class="p">,</span> <span class="n">opts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(dm?s?)([.\d]*)([′&#39;]?)&quot;</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">long</span><span class="p">]:</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ms</span> <span class="ow">in</span> <span class="n">dms</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)))</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">((</span><span class="n">num</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">))</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+            <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">nfmt</span> <span class="o">+</span> <span class="s2">&quot;f&quot;</span><span class="p">))</span>
+            <span class="n">syms</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="s2">&quot;&#39;&quot;</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="n">syms</span> <span class="o">=</span> <span class="s2">&quot;°&#39;</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;′&quot;</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="n">syms</span> <span class="o">=</span> <span class="s2">&quot;°′″&quot;</span>
+            <span class="k">if</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="o">+</span> <span class="n">s</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">syms</span><span class="p">)]</span>
+            <span class="n">formatted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">))</span>
+        <span class="n">joined</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">joined</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; where = LatLong(42.359764937, -71.092068768)
+&gt;&gt;&gt; print(f&quot;Location: {where:d&#39;}&quot;)
+Location: 42.359765°, -71.092069°
+&gt;&gt;&gt; print(f&quot;Location: {where:d.4}&quot;)
+Location: 42.3598, -71.0921
+&gt;&gt;&gt; print(f&quot;Location: {where:dm&#39;}&quot;)
+Location: 42° 21.585896&#39;, -71° 5.524126&#39;
+&gt;&gt;&gt; print(f&quot;Location: {where:dms.4&#39;}&quot;)
+Location: 42° 21&#39; 35.1538&quot;, -71° 5&#39; 31.4476&quot;
+&gt;&gt;&gt; print(f&quot;Location: {where:dms.4}&quot;)
+Location: 42 21 35.1538, -71 5 31.4476
+&gt;&gt;&gt; print(f&quot;Location: {where:dms.6′}&quot;)
+Location: 42° 21′ 35.153773″, -71° 5′ 31.447565″
+&gt;&gt;&gt; print(&quot;There: {:dms.6′}&quot;.format(where))
+There: 42° 21′ 35.153773″, -71° 5′ 31.447565″
+&gt;&gt;&gt; print(format(where, &quot;dms.6′&quot;))
+42° 21′ 35.153773″, -71° 5′ 31.447565″
+</code></pre></div>
+
+<p>This implementation doesn’t handle errors properly, but shows the basic idea. Also, lat/long are often shown with N/S E/W instead of positive and negative values. That’s left as an exercise for the reader.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

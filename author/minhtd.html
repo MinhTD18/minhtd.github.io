@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>MinhTD's Blogs - minhtd</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">MinhTD's Blogs</a></h1>
+                <nav><ul>
+                    <li><a href="/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/moving-a-git-branch-to-a-new-base.html">Moving a git branch to a new base</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2022-02-10T00:00:00-05:00">
+                Published: Thu 10 February 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/minhtd.html">minhtd</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info --><p>Suppose you have some work on a git branch that you started from one branch, and you want to move that work to be based on a different branch, as if you had started from there originally. The git rebase command gives you the tools to do it, but it’s complicated, and I can never remember the details, so I finally figured it out and made an alias to do it.</p>
+<p>In this post I’ll use an example where I’m working on branch “my-work”, which I started from “old-home” and I want to move it to “new-home”. My initial state looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% git log --oneline --decorate --graph --all</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">a8ab80e</span><span class="w"> </span><span class="p">(</span><span class="n">HEAD</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">my</span><span class="o">-</span><span class="n">work</span><span class="p">)</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="mf">5f66562</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">9682932</span><span class="w"> </span><span class="p">(</span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="p">)</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="o">|/</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>98<span class="n">d09e4</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">a6fa334</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">e409e95</span><span class="w"> </span><span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="p">)</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>7<span class="n">d3ca09</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">|/</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>1<span class="n">b008d5</span><span class="w"> </span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">e9152aa</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+</code></pre></div>
+
+<p>The git tool to perform a move like this is “git rebase --onto”. The general form of the command needs three pieces of information, but the third is the branch to move, which defaults to the current branch, so we can just omit that. The other two items are: where you want to snip the current branch from, and where you want to graft it onto. The command looks like this:</p>
+<div class="highlight"><pre><span></span><code>git rebase --onto=&lt;graft-onto&gt; &lt;snip-from&gt; [&lt;branch-to-move&gt;]
+</code></pre></div>
+
+<p>In our example, we want to snip the branch from the point where it started on old-home. The “git merge-base” command can tell us the commit where two branches diverge, so it’s perfect for this:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% git merge-base old-home @</span><span class="w"></span>
+<span class="n">98d09e4b4d3ca45e3e03cf27386f7dd01f0662a8</span><span class="w"></span>
+</code></pre></div>
+
+<p>Putting this together in one command looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% git rebase --onto new-home $(git merge-base old-home @)</span><span class="w"></span>
+<span class="n">Successfully</span><span class="w"> </span><span class="s">rebased</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">updated</span><span class="w"> </span><span class="s">refs/heads/my-work.</span><span class="w"></span>
+</code></pre></div>
+
+<p>The result is just what we wanted:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% git log --oneline --decorate --graph --all</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">df22106</span><span class="w"> </span><span class="p">(</span><span class="n">HEAD</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">my</span><span class="o">-</span><span class="n">work</span><span class="p">)</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>9<span class="n">ac8707</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">e409e95</span><span class="w"> </span><span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="p">)</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>7<span class="n">d3ca09</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">9682932</span><span class="w"> </span><span class="p">(</span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="p">)</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>98<span class="n">d09e4</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a6fa334</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">|/</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>1<span class="n">b008d5</span><span class="w"> </span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">e9152aa</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+</code></pre></div>
+
+<p>But that command is complicated to type, so I made an alias in my .gitconfig:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[alias]</span><span class="w"></span>
+<span class="na">movebranch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() { \</span><span class="w"></span>
+<span class="w">    </span><span class="na">: git checkout \</span><span class="w"></span>
+<span class="w">    </span><span class="na">git rebase --onto $2 $(git merge-base $1 @) \</span><span class="w"></span>
+<span class="na">}; f&quot;</span><span class="w"></span>
+</code></pre></div>
+
+<p>Now our branch move command would look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% git movebranch old-home new-home</span><span class="w"></span>
+<span class="n">Successfully</span><span class="w"> </span><span class="s">rebased</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">updated</span><span class="w"> </span><span class="s">refs/heads/my-work.</span><span class="w"></span>
+</code></pre></div>
+
+<p>And the result is the same:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% git log --oneline --decorate --graph --all</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">df22106</span><span class="w"> </span><span class="p">(</span><span class="n">HEAD</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">my</span><span class="o">-</span><span class="n">work</span><span class="p">)</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>9<span class="n">ac8707</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">e409e95</span><span class="w"> </span><span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="p">)</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>7<span class="n">d3ca09</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">9682932</span><span class="w"> </span><span class="p">(</span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="p">)</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>98<span class="n">d09e4</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a6fa334</span><span class="w"> </span><span class="n">old</span><span class="o">-</span><span class="nb">home</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">|/</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span>1<span class="n">b008d5</span><span class="w"> </span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">e9152aa</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python-custom-formatting.html" rel="bookmark"
+                           title="Permalink to Python custom formatting">Python custom formatting</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-02-10T00:00:00-05:00">
+                Published: Thu 10 February 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/minhtd.html">minhtd</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Python f-strings use a formatting mini-language, the same as the older .format() function. After the colon comes short specifications for how to format the value:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; word = &quot;Hello&quot;
+&gt;&gt;&gt; f&quot;{word:/^20}&quot;
+&#39;///////Hello////////&#39;
+&gt;&gt;&gt; amt = 12345678
+&gt;&gt; f&quot;{amt:20,}&quot;
+&#39;          12,345,678&#39;
+</code></pre></div>
+
+<p>Datetimes can use strftime syntax:</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; f&quot;{now:%Y-%m on day …</code></pre></div>
+                <a class="readmore" href="/python-custom-formatting.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
