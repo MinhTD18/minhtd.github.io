@@ -1,0 +1,16 @@
+{
+  "name": "vue_blog",
+  "version": "1.0.0",
+  "description": "my first blog using vuepress and github pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "author": "Truong Duc Minh",
+  "license": "ISC",
+  "dependencies": {
+    "vuepress": "^1.9.9"
+  }
+}
