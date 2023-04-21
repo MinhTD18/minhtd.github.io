@@ -2,7 +2,8 @@
 title: Moving A Git Branch To A New Base
 ---
 
-
+# Moving A Git Branch To A New Base
+ 
 Suppose you have some work on a git branch that you started from one branch, and you want to move that work to be based on a different branch, as if you had started from there originally. The git rebase command gives you the tools to do it, but it’s complicated, and I can never remember the details, so I finally figured it out and made an alias to do it.
 
 In this post I’ll use an example where I’m working on branch “my-work”, which I started from “old-home” and I want to move it to “new-home”. My initial state looks like this:

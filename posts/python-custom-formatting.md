@@ -2,6 +2,7 @@
 title: Python Custom Formatting
 ---
 
+# Python Custom Formatting
 
 Python f-strings use a formatting mini-language, the same as the older .format() function. After the colon comes short specifications for how to format the value:
 
