@@ -2,6 +2,6 @@
 home: true
 ---
 
-# All Posts
+<h1>All Posts</h1>
 
 <all-posts />

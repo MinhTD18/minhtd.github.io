@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Moving A Git Branch To A New Base | Minh&#39;s blog</title>
+    <title>Moving A Git Branch To A New Base | MinhTD&#39;s blog</title>
     <meta name="generator" content="VuePress 1.9.9">
     
     <meta name="description" content="This blog shows how to move a Git branch to a new base using the git rebase command. The post explains how to use the git rebase --onto command to specify the base branch to move the work to and the point at which to snip the branch. The tutorial provides an example, showing how to move a branch named my-work from its original base branch old-home to a new base branch new-home. It also includes an alias command to make the process easier to remember and execute.">
     
-    <link rel="preload" href="/assets/css/0.styles.72a9d938.css" as="style"><link rel="preload" href="/assets/js/app.7c983b05.js" as="script"><link rel="preload" href="/assets/js/2.487b4d99.js" as="script"><link rel="preload" href="/assets/js/10.ae3b51d6.js" as="script"><link rel="prefetch" href="/assets/js/11.6f8ecc00.js"><link rel="prefetch" href="/assets/js/3.ae4442ce.js"><link rel="prefetch" href="/assets/js/4.f4e32b0e.js"><link rel="prefetch" href="/assets/js/5.2bad16c7.js"><link rel="prefetch" href="/assets/js/6.f291ec92.js"><link rel="prefetch" href="/assets/js/7.91a26545.js"><link rel="prefetch" href="/assets/js/8.82997f9c.js"><link rel="prefetch" href="/assets/js/9.9e93b3be.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.72a9d938.css">
+    <link rel="preload" href="/assets/css/0.styles.f2497b95.css" as="style"><link rel="preload" href="/assets/js/app.ee96985d.js" as="script"><link rel="preload" href="/assets/js/2.487b4d99.js" as="script"><link rel="preload" href="/assets/js/10.780e0936.js" as="script"><link rel="prefetch" href="/assets/js/11.57c6e6ac.js"><link rel="prefetch" href="/assets/js/12.789df3c2.js"><link rel="prefetch" href="/assets/js/3.43f822b3.js"><link rel="prefetch" href="/assets/js/4.235127cc.js"><link rel="prefetch" href="/assets/js/5.78e26efb.js"><link rel="prefetch" href="/assets/js/6.94f35d6d.js"><link rel="prefetch" href="/assets/js/7.91a26545.js"><link rel="prefetch" href="/assets/js/8.c7747226.js"><link rel="prefetch" href="/assets/js/9.9e93b3be.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f2497b95.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Minh's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MinhTD's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
   Home
 </a></div><div class="nav-item"><a href="/about/" class="nav-link">
   About
@@ -66,7 +66,7 @@ Successfully rebased and updated refs/heads/my-work.
 <span class="token operator">|</span>/
 * 1b008d5 <span class="token punctuation">(</span>main<span class="token punctuation">)</span> main edit <span class="token number">2</span>
 * e9152aa main edit <span class="token number">1</span>
-</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.7c983b05.js" defer></script><script src="/assets/js/2.487b4d99.js" defer></script><script src="/assets/js/10.ae3b51d6.js" defer></script>
+</code></pre></div><div style="text-align:right;font-size:xx-small;"> Published date: 21 April, 2023 </div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.ee96985d.js" defer></script><script src="/assets/js/2.487b4d99.js" defer></script><script src="/assets/js/10.780e0936.js" defer></script>
   </body>
 </html>

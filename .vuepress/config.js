@@ -1,6 +1,6 @@
 module.exports = {
-  title: "Minh's blog",
-  description: 'This is a blog about web app knowledge',
+  title: "MinhTD's blog",
+  description: "Developing web apps is like creating a virtual world where anything is possible. It's the perfect blend of creativity and technical expertise, and the possibilities are endless.",
   // locales: {
   //   '/vi': {
   //     lang: 'vi-VN',
