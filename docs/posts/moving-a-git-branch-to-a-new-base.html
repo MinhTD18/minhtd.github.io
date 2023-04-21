@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Moving A Git Branch To A New Base | Blog của Minh</title>
+    <title>Moving A Git Branch To A New Base | Minh&#39;s blog</title>
     <meta name="generator" content="VuePress 1.9.9">
     
-    <meta name="description" content="Đây là blog của Minh chứa một vài kiến thức về web app">
+    <meta name="description" content="This blog shows how to move a Git branch to a new base using the git rebase command. The post explains how to use the git rebase --onto command to specify the base branch to move the work to and the point at which to snip the branch. The tutorial provides an example, showing how to move a branch named my-work from its original base branch old-home to a new base branch new-home. It also includes an alias command to make the process easier to remember and execute.">
     
-    <link rel="preload" href="/assets/css/0.styles.e8e4f3a3.css" as="style"><link rel="preload" href="/assets/js/app.0e0a4413.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/10.397c4fea.js" as="script"><link rel="prefetch" href="/assets/js/11.a8e2bdf8.js"><link rel="prefetch" href="/assets/js/3.4122aa84.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.63d23cc9.js"><link rel="prefetch" href="/assets/js/7.64a18af6.js"><link rel="prefetch" href="/assets/js/8.82997f9c.js"><link rel="prefetch" href="/assets/js/9.66b91cf0.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.e8e4f3a3.css">
+    <link rel="preload" href="/assets/css/0.styles.72a9d938.css" as="style"><link rel="preload" href="/assets/js/app.7c983b05.js" as="script"><link rel="preload" href="/assets/js/2.487b4d99.js" as="script"><link rel="preload" href="/assets/js/10.ae3b51d6.js" as="script"><link rel="prefetch" href="/assets/js/11.6f8ecc00.js"><link rel="prefetch" href="/assets/js/3.ae4442ce.js"><link rel="prefetch" href="/assets/js/4.f4e32b0e.js"><link rel="prefetch" href="/assets/js/5.2bad16c7.js"><link rel="prefetch" href="/assets/js/6.f291ec92.js"><link rel="prefetch" href="/assets/js/7.91a26545.js"><link rel="prefetch" href="/assets/js/8.82997f9c.js"><link rel="prefetch" href="/assets/js/9.9e93b3be.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.72a9d938.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Blog của Minh</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
-  Trang Chủ
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Minh's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
 </a></div><div class="nav-item"><a href="/about/" class="nav-link">
-  Giới Thiệu
+  About
 </a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
-  Trang Chủ
+  Home
 </a></div><div class="nav-item"><a href="/about/" class="nav-link">
-  Giới Thiệu
+  About
 </a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Moving A Git Branch To A New Base</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="moving-a-git-branch-to-a-new-base"><a href="#moving-a-git-branch-to-a-new-base" class="header-anchor">#</a> Moving A Git Branch To A New Base</h1> <p>Suppose you have some work on a git branch that you started from one branch, and you want to move that work to be based on a different branch, as if you had started from there originally. The git rebase command gives you the tools to do it, but it’s complicated, and I can never remember the details, so I finally figured it out and made an alias to do it.</p> <p>In this post I’ll use an example where I’m working on branch “my-work”, which I started from “old-home” and I want to move it to “new-home”. My initial state looks like this:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>% <span class="token function">git</span> log <span class="token parameter variable">--oneline</span> <span class="token parameter variable">--decorate</span> <span class="token parameter variable">--graph</span> <span class="token parameter variable">--all</span>
 * a8ab80e <span class="token punctuation">(</span>HEAD -<span class="token operator">&gt;</span> my-work<span class="token punctuation">)</span> my work edit <span class="token number">2</span>
 * 5f66562 my work edit <span class="token number">1</span>
@@ -67,6 +67,6 @@ Successfully rebased and updated refs/heads/my-work.
 * 1b008d5 <span class="token punctuation">(</span>main<span class="token punctuation">)</span> main edit <span class="token number">2</span>
 * e9152aa main edit <span class="token number">1</span>
 </code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.0e0a4413.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/10.397c4fea.js" defer></script>
+    <script src="/assets/js/app.7c983b05.js" defer></script><script src="/assets/js/2.487b4d99.js" defer></script><script src="/assets/js/10.ae3b51d6.js" defer></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Blog của Minh',
-  description: 'Đây là blog của Minh chứa một vài kiến thức về web app',
+  title: "Minh's blog",
+  description: 'This is a blog about web app knowledge',
   // locales: {
   //   '/vi': {
   //     lang: 'vi-VN',
@@ -16,8 +16,8 @@ module.exports = {
   themeConfig: {
     sidebar: 'auto',
     nav: [
-      { text: 'Trang Chủ', link: '/' },
-      { text: 'Giới Thiệu', link: '/about/' },
+      { text: 'Home', link: '/' },
+      { text: 'About', link: '/about/' },
       // { text: 'Youtube', link: 'https://youtube.com' },
     ],
   },

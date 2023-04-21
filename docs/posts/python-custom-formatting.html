@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Python Custom Formatting | Blog của Minh</title>
+    <title>Python Custom Formatting | Minh&#39;s blog</title>
     <meta name="generator" content="VuePress 1.9.9">
     
-    <meta name="description" content="Đây là blog của Minh chứa một vài kiến thức về web app">
+    <meta name="description" content="This blog post explains how to use Python&#39;s formatting mini-language to format strings and datetimes, as well as how to create custom formatting options for any object. It also provides an implementation for formatting geographic coordinates in various formats with different symbol options.">
     
-    <link rel="preload" href="/assets/css/0.styles.e8e4f3a3.css" as="style"><link rel="preload" href="/assets/js/app.0e0a4413.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/11.a8e2bdf8.js" as="script"><link rel="prefetch" href="/assets/js/10.397c4fea.js"><link rel="prefetch" href="/assets/js/3.4122aa84.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.63d23cc9.js"><link rel="prefetch" href="/assets/js/7.64a18af6.js"><link rel="prefetch" href="/assets/js/8.82997f9c.js"><link rel="prefetch" href="/assets/js/9.66b91cf0.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.e8e4f3a3.css">
+    <link rel="preload" href="/assets/css/0.styles.72a9d938.css" as="style"><link rel="preload" href="/assets/js/app.7c983b05.js" as="script"><link rel="preload" href="/assets/js/2.487b4d99.js" as="script"><link rel="preload" href="/assets/js/11.6f8ecc00.js" as="script"><link rel="prefetch" href="/assets/js/10.ae3b51d6.js"><link rel="prefetch" href="/assets/js/3.ae4442ce.js"><link rel="prefetch" href="/assets/js/4.f4e32b0e.js"><link rel="prefetch" href="/assets/js/5.2bad16c7.js"><link rel="prefetch" href="/assets/js/6.f291ec92.js"><link rel="prefetch" href="/assets/js/7.91a26545.js"><link rel="prefetch" href="/assets/js/8.82997f9c.js"><link rel="prefetch" href="/assets/js/9.9e93b3be.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.72a9d938.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Blog của Minh</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
-  Trang Chủ
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Minh's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
 </a></div><div class="nav-item"><a href="/about/" class="nav-link">
-  Giới Thiệu
+  About
 </a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
-  Trang Chủ
+  Home
 </a></div><div class="nav-item"><a href="/about/" class="nav-link">
-  Giới Thiệu
+  About
 </a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Python Custom Formatting</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="python-custom-formatting"><a href="#python-custom-formatting" class="header-anchor">#</a> Python Custom Formatting</h1> <p>Python f-strings use a formatting mini-language, the same as the older .format() function. After the colon comes short specifications for how to format the value:</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> word <span class="token operator">=</span> <span class="token string">&quot;Hello&quot;</span>
 <span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string-interpolation"><span class="token string">f&quot;</span><span class="token interpolation"><span class="token punctuation">{</span>word<span class="token punctuation">:</span><span class="token format-spec">/^20</span><span class="token punctuation">}</span></span><span class="token string">&quot;</span></span>
 <span class="token string">'///////Hello////////'</span>
@@ -79,6 +79,6 @@ There<span class="token punctuation">:</span> <span class="token number">42</spa
 <span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">format</span><span class="token punctuation">(</span>where<span class="token punctuation">,</span> <span class="token string">&quot;dms.6′&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token number">42</span>° <span class="token number">21</span>′ <span class="token number">35.153773</span>″<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">71</span>° <span class="token number">5</span>′ <span class="token number">31.447565</span>″
 </code></pre></div><p>This implementation doesn’t handle errors properly, but shows the basic idea. Also, lat/long are often shown with N/S E/W instead of positive and negative values. That’s left as an exercise for the reader.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.0e0a4413.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/11.a8e2bdf8.js" defer></script>
+    <script src="/assets/js/app.7c983b05.js" defer></script><script src="/assets/js/2.487b4d99.js" defer></script><script src="/assets/js/11.6f8ecc00.js" defer></script>
   </body>
 </html>
