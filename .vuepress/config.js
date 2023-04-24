@@ -21,5 +21,13 @@ module.exports = {
       // { text: 'Youtube', link: 'https://youtube.com' },
     ],
   },
+  plugins: [
+    ["vuepress-plugin-code-copy", {
+        backgroundTransition: true,
+        successText: 'Copied!', 
+        backgroundTransition: true,
+        }
+    ]
+  ],
   dest: 'docs',
 }

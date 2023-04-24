@@ -1,6 +1,6 @@
 ---
 title: Python Custom Formatting
-author: MinhTD13
+author: MinhTD
 description: This blog post explains how to use Python's formatting mini-language to format strings and datetimes, as well as how to create custom formatting options for any object. It also provides an implementation for formatting geographic coordinates in various formats with different symbol options. 
 published_date: 21 April, 2023 
 ---

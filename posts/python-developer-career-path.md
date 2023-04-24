@@ -1,6 +1,6 @@
 ---
 title: How to Build a Successful Career in Python Development
-author: MinhTD13
+author: MinhTD
 description: In this blog post, we will explore the Python developer career path and provide tips on how to build a successful career in Python development. We will discuss the various roles and responsibilities of a Python developer, the skills and qualifications required, and the career growth opportunities available. We will also provide practical advice on how to acquire the necessary skills, gain experience, and advance your career as a Python developer. Whether you are a beginner or an experienced developer looking to switch to Python, this blog post will provide valuable insights into the Python development industry and help you take your career to the next level.
 published_date: 21 April, 2023 
 ---
