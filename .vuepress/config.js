@@ -1,24 +1,11 @@
 module.exports = {
-  title: "MinhTD's blog",
-  description: "Developing web apps is like creating a virtual world where anything is possible. It's the perfect blend of creativity and technical expertise, and the possibilities are endless.",
-  // locales: {
-  //   '/vi': {
-  //     lang: 'vi-VN',
-  //     title: 'Blog của Minh',
-  //     description: 'Mô tả tiếng việt',
-  //   },
-  //   '/en': {
-  //     lang: 'en-EN',
-  //     title: 'Blog',
-  //     description: 'Mô tả tiếng anh',
-  //   },
-  // },
+  title: "Home",
   themeConfig: {
     sidebar: 'auto',
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Blogs', link: '/all_posts/' },
       { text: 'About', link: '/about/' },
-      // { text: 'Youtube', link: 'https://youtube.com' },
     ],
   },
   plugins: [
@@ -30,4 +17,21 @@ module.exports = {
     ]
   ],
   dest: 'docs',
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#ffffff' }],
+    ['meta', { name: 'theme-color', content: '#ffffff' }]
+  ],
+  markdown: {
+    config: md => {
+      md.renderer.rules.heading_open = (tokens, idx) => {
+        const level = tokens[idx].hLevel;
+        const text = tokens[idx + 1].content;
+        return `<h${level}><img src="/path/to/your-image-file.png" alt="${text}" /></h${level}>`;
+      };
+    }
+  }
 }

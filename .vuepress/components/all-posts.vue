@@ -2,7 +2,7 @@
     <div class="post-container">
         <router-link v-for="page in $site.pages.filter(p => p.path.includes('/posts'))" :to="page.path">
             <div class="post-card">
-                <img class="article-image" src="avatar.png" />
+                <img class="article-image" src="/human-brain.png" />
                 <div class="page-detail">
                     <div class="page-title">{{ page.title }}</div>
                     <div class="page-description">{{ page.frontmatter.description }}</div>
@@ -40,6 +40,7 @@ export default {
 }
 
 .article-image {
+    border-radius: 3px;
     max-height: 200px;
     height: 100%;
     margin-right: 10px;
