@@ -25,6 +25,6 @@
 </li>
 </ol>
 <p>In summary, the career path for a Python developer involves learning the basics of Python, choosing a specialization, building a portfolio, contributing to open-source projects, getting certified, attending conferences and meetups, and looking for job opportunities. With dedication and hard work, you can build a successful career as a Python developer.</p>
-<div style="text-align: right; font-size: xx-small;"> Published date: 21 April, 2023 </div></div></template>
+</div></template>
 
 

@@ -29,6 +29,6 @@
 <p>To set up monitoring and logging, go to the Monitoring and Logging tabs in the AWS Management Console and configure the settings for each tool. You can set up alarms and notifications for metrics such as CPU usage, network traffic, and disk utilization, and you can log events such as API calls, security events, and configuration changes.</p>
 <h3 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion" aria-hidden="true">#</a> Conclusion:</h3>
 <p>Building a simple infrastructure in AWS is a straightforward process that requires following a few basic steps. By setting up a VPC, launching EC2 instances, configuring security groups, attaching an Elastic IP, setting up a load balancer, creating a database instance, and setting up monitoring and logging, you can create a secure, scalable, and highly available infrastructure that meets the needs of your applications. With AWS, you can easily experiment and iterate on your infrastructure as your needs evolve, without incurring any upfront costs or long-term commitments.</p>
-<div style="text-align: right; font-size: xx-small;"> Published date: 26 April, 2023 </div></div></template>
+</div></template>
 
 

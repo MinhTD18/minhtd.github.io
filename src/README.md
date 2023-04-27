@@ -4,9 +4,11 @@ layout: BlogHome
 icon: home
 title: Home
 heroImage: /logo.svg
+bgImage: /home-background.jpeg
 heroText: Welcome to MinhTD's Blog
 tagline: Developing web apps is like creating a virtual world where anything is possible
 heroFullScreen: true
+NavActions: after
 # projects:
 #   - icon: project
 #     name: project name
@@ -29,9 +31,9 @@ heroFullScreen: true
 #     link: https://link.to.your.article
 
 #   - icon: friend
-#     name: friend name
-#     desc: Detailed description of friend
-#     link: https://link.to.your.friend
+#     name: LinhNT
+#     desc: My Sugar Girlfriend
+#     link: https://www.facebook.com/profile.php?id=100075816565100
 
 #   - icon: /logo.svg
 #     name: custom item

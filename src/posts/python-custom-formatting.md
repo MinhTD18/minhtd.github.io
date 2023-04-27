@@ -2,11 +2,11 @@
 title: Python Custom Formatting
 author: MinhTD
 description: This blog post explains how to use Python's formatting mini-language to format strings and datetimes, as well as how to create custom formatting options for any object. It also provides an implementation for formatting geographic coordinates in various formats with different symbol options. 
-published_date: 21 April, 2023 
 tag: 
   - Python 
 category:
   - Guide
+date: 2023-04-21
 ---
 
 # Python Custom Formatting
@@ -94,6 +94,3 @@ There: 42° 21′ 35.153773″, -71° 5′ 31.447565″
 ```
 
 This implementation doesn’t handle errors properly, but shows the basic idea. Also, lat/long are often shown with N/S E/W instead of positive and negative values. That’s left as an exercise for the reader.
-
-
-<div style="text-align: right; font-size: xx-small;"> Published date: 21 April, 2023 </div>

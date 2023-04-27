@@ -16,6 +16,10 @@ export const enSidebar = sidebar({
       prefix: "posts/",
       children: "structure",
     },
+    {
+      text: "About",
+      link: "about"
+    },
     // "intro",
     // "slides",
   ],

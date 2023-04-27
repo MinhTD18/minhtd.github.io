@@ -28,6 +28,6 @@
 <p>Another advantage of AWS is its reliability. AWS provides a highly available and fault-tolerant infrastructure, which means that your applications and data are protected against failures and downtime. AWS also offers a range of backup and disaster recovery services to help you ensure the continuity of your business operations.</p>
 <p>AWS also offers a wide range of pricing options to help you optimize your costs, including on-demand pricing, reserved instances, and spot instances. AWS also offers a free tier that allows you to try many of its services for free for up to 12 months.</p>
 <p>In summary, AWS is a powerful and flexible cloud platform that provides a wide range of services to help you build, deploy, and manage your applications in the cloud. With its scalability, reliability, and cost-effectiveness, AWS has become the go-to solution for businesses and individuals who want to leverage the power of the cloud.</p>
-<div style="text-align: right; font-size: xx-small;"> Published date: 26 April, 2023 </div></div></template>
+</div></template>
 
 

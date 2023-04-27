@@ -50,6 +50,6 @@
 <p>Finally, we use the <code v-pre>uvicorn</code> command to run the application on a local server. We pass the name of the Python file and the name of the <code v-pre>FastAPI</code> instance (<code v-pre>app</code>) as arguments to the <code v-pre>uvicorn.run</code> function, along with other optional parameters like <code v-pre>host</code> and <code v-pre>port</code>. By default, the application will run on <code v-pre>http://localhost:8000/</code>.</p>
 <div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>uvicorn main:app --reload
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>This is a basic example of how to create a to-do list API using FastAPI. You can customize it further to meet your requirements.</p>
-<div style="text-align: right; font-size: xx-small;"> Published date: 25 April, 2023 </div></div></template>
+</div></template>
 
 

@@ -6,6 +6,7 @@ tag:
   - AWS
 category:
   - Guide
+date: 2023-04-26
 ---
 
 ### Step 1: Sign up for AWS
@@ -68,5 +69,3 @@ To set up monitoring and logging, go to the Monitoring and Logging tabs in the A
 
 ### Conclusion:
 Building a simple infrastructure in AWS is a straightforward process that requires following a few basic steps. By setting up a VPC, launching EC2 instances, configuring security groups, attaching an Elastic IP, setting up a load balancer, creating a database instance, and setting up monitoring and logging, you can create a secure, scalable, and highly available infrastructure that meets the needs of your applications. With AWS, you can easily experiment and iterate on your infrastructure as your needs evolve, without incurring any upfront costs or long-term commitments.
-
-<div style="text-align: right; font-size: xx-small;"> Published date: 26 April, 2023 </div>

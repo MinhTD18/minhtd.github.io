@@ -14,7 +14,7 @@ export default hopeTheme({
 
   logo: "/logo.svg",
 
-  // repo: "https://minhtd18.github.io",
+  repo: "https://github.com/MinhTD18/minhtd18.github.io",
 
   docsDir: "docs",
 
@@ -28,7 +28,7 @@ export default hopeTheme({
       // Dribbble: "https://example.com",
       // Email: "mailto:info@example.com",
       // Evernote: "https://example.com",
-      // Facebook: "https://example.com",
+      Facebook: "https://www.facebook.com/minhnothing97/",
       // Flipboard: "https://example.com",
       // Gitee: "https://example.com",
       GitHub: "https://github.com/MinhTD18",
@@ -71,9 +71,9 @@ export default hopeTheme({
         description: "A Software Engineer",
       },
 
-      metaLocales: {
-        editLink: "Edit this page on GitHub",
-      },
+      // metaLocales: {
+      //   editLink: "Edit this page on GitHub",
+      // },
     },
   },
 
@@ -82,6 +82,15 @@ export default hopeTheme({
       "/demo/encrypt.html": ["1234"],
     },
   },
+
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    green: "#3eaf7c",
+    orange: "#fb9b5f",
+  },
+
+  fullscreen: true,
 
   plugins: {
     blog: true,

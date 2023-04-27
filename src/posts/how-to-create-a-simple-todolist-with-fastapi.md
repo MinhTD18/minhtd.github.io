@@ -2,12 +2,12 @@
 title: Create A Simple Todo List API Using FastAPI
 author: MinhTD
 description: The steps to create a simple to-do list API using FastAPI, a Python framework for building APIs quickly and easily. It covers the installation of necessary packages, the creation of a FastAPI app, and the implementation of various API routes to handle HTTP requests such as creating, retrieving, updating, and deleting to-do items. The guideline also utilizes Pydantic, a library for data validation and serialization, to define the structure of the to-do item. This is a basic example that can be customized and extended to meet specific requirements.
-published_date: 25 April, 2023 
 tag: 
   - Python
   - FastAPI 
 category:
   - Guide
+date: 2023-04-25
 ---
 
 # Create A Simple Todo List API Using FastAPI
@@ -97,6 +97,3 @@ uvicorn main:app --reload
 ```
 
 This is a basic example of how to create a to-do list API using FastAPI. You can customize it further to meet your requirements.
-
-
-<div style="text-align: right; font-size: xx-small;"> Published date: 25 April, 2023 </div>

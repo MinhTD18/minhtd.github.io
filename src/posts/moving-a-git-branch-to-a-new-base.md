@@ -2,11 +2,11 @@
 title: Moving A Git Branch To A New Base
 author: MinhTD
 description: This blog shows how to move a Git branch to a new base using the git rebase command. The post explains how to use the git rebase --onto command to specify the base branch to move the work to and the point at which to snip the branch. The tutorial provides an example, showing how to move a branch named my-work from its original base branch old-home to a new base branch new-home. It also includes an alias command to make the process easier to remember and execute.
-published_date: 21 April, 2023 
 tag: 
   - Git 
 category:
   - Guide
+date: 2023-04-21
 ---
 
 # Moving A Git Branch To A New Base
@@ -98,6 +98,3 @@ And the result is the same:
 * 1b008d5 (main) main edit 2
 * e9152aa main edit 1
 ```
-
-
-<div style="text-align: right; font-size: xx-small;"> Published date: 21 April, 2023 </div>

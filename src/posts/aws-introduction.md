@@ -6,6 +6,7 @@ tag:
   - AWS
 category:
   - Guide
+date: 2023-04-26
 ---
 Amazon Web Services (AWS) is a cloud computing platform that provides a wide range of services to help you build, deploy, and manage your applications in the cloud. AWS is a product of Amazon, and it was launched in 2006 with a handful of services. Today, AWS has become the most widely adopted cloud platform in the world, providing businesses and individuals with a flexible, reliable, and scalable infrastructure.
 
@@ -34,5 +35,3 @@ Another advantage of AWS is its reliability. AWS provides a highly available and
 AWS also offers a wide range of pricing options to help you optimize your costs, including on-demand pricing, reserved instances, and spot instances. AWS also offers a free tier that allows you to try many of its services for free for up to 12 months.
 
 In summary, AWS is a powerful and flexible cloud platform that provides a wide range of services to help you build, deploy, and manage your applications in the cloud. With its scalability, reliability, and cost-effectiveness, AWS has become the go-to solution for businesses and individuals who want to leverage the power of the cloud.
-
-<div style="text-align: right; font-size: xx-small;"> Published date: 26 April, 2023 </div>
