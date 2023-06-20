@@ -1,14 +1,14 @@
 import { defineClientConfig } from "@vuepress/client";
 
-import { HopeIcon, Layout, NotFound, useScrollPromise, injectDarkmode, setupDarkmode, setupSidebarItems } from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-theme-hope/lib/bundle/export.js";
+import { HopeIcon, Layout, NotFound, useScrollPromise, injectDarkmode, setupDarkmode, setupSidebarItems } from "/workspaces/minhtd18.github.io/node_modules/vuepress-theme-hope/lib/bundle/export.js";
 
-import { BlogCategory, BlogHome, BlogType, BloggerInfo, Timeline, setupBlog } from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/export.js";
-import "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/styles/all.scss";
-import { GlobalEncrypt, LocalEncrypt } from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/export.js";
-import "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/styles/all.scss"
-import Slide from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-plugin-md-enhance/lib/client/SlidePage.js";
+import { BlogCategory, BlogHome, BlogType, BloggerInfo, Timeline, setupBlog } from "/workspaces/minhtd18.github.io/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/export.js";
+import "/workspaces/minhtd18.github.io/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/styles/all.scss";
+import { GlobalEncrypt, LocalEncrypt } from "/workspaces/minhtd18.github.io/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/export.js";
+import "/workspaces/minhtd18.github.io/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/styles/all.scss"
+import Slide from "/workspaces/minhtd18.github.io/node_modules/vuepress-plugin-md-enhance/lib/client/SlidePage.js";
 
-import "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-theme-hope/lib/bundle/styles/all.scss";
+import "/workspaces/minhtd18.github.io/node_modules/vuepress-theme-hope/lib/bundle/styles/all.scss";
 
 export default defineClientConfig({
   enhance: ({ app, router }) => {

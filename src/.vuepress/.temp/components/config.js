@@ -1,13 +1,13 @@
 import { defineClientConfig } from "@vuepress/client";
-import { hasGlobalComponent } from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-plugin-components/lib/client/shared.js";
+import { hasGlobalComponent } from "/workspaces/minhtd18.github.io/node_modules/vuepress-plugin-components/lib/client/shared.js";
 import { h } from "vue";
 
-import { useStyleTag } from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-plugin-components/lib/client/vueuse.js";
-import Badge from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
-import FontIcon from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
-import BackToTop from "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-plugin-components/lib/client/components/BackToTop.js";
+import { useStyleTag } from "/workspaces/minhtd18.github.io/node_modules/vuepress-plugin-components/lib/client/vueuse.js";
+import Badge from "/workspaces/minhtd18.github.io/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
+import FontIcon from "/workspaces/minhtd18.github.io/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
+import BackToTop from "/workspaces/minhtd18.github.io/node_modules/vuepress-plugin-components/lib/client/components/BackToTop.js";
 
-import "/Users/minhtd/Desktop/Blogs/vue_blog/node_modules/vuepress-plugin-components/lib/client/styles/sr-only.scss";
+import "/workspaces/minhtd18.github.io/node_modules/vuepress-plugin-components/lib/client/styles/sr-only.scss";
 
 export default defineClientConfig({
   enhance: ({ app }) => {
