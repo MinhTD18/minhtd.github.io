@@ -2,6 +2,7 @@
 title: About Me
 author: MinhTD
 date: 2023-04-26
+hidden: true
 ---
 
 My name is **Truong Duc Minh**, and I'm **a Software Engineer** based in **VietNam**. Here's some more information about me:

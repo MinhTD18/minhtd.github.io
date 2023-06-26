@@ -17,6 +17,7 @@ export const enNavbar = navbar([
           { text: "AWS introduction", icon: "read", link: "aws-introduction.html" },
           { text: "Building a simple infrastructure in AWS", icon: "read", link: "aws-build-a-simple-infrastructure.html" },
           { text: "Essential mindset for frontend developer", icon: "read", link: "essential-mindset-for-frontend-developer.html" },
+          { text: "AWS TIPS I WISH I'D KNOWN BEFORE I STARTED", icon: "read", link: "aws-tips.html" },
           // { text: "Markdown example", icon: "read", link: "markdown.html" },
         ]
       },

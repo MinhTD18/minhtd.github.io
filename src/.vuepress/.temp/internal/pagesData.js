@@ -7,6 +7,8 @@ export const pagesData = {
   "v-1a48e06b": () => import(/* webpackChunkName: "v-1a48e06b" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/aws-build-a-simple-infrastructure.html.js").then(({ data }) => data),
   // path: /posts/aws-introduction.html
   "v-4675065a": () => import(/* webpackChunkName: "v-4675065a" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/aws-introduction.html.js").then(({ data }) => data),
+  // path: /posts/aws-tips.html
+  "v-160dd8fc": () => import(/* webpackChunkName: "v-160dd8fc" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/aws-tips.html.js").then(({ data }) => data),
   // path: /posts/essential-mindset-for-frontend-developers.html
   "v-58c8628a": () => import(/* webpackChunkName: "v-58c8628a" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/essential-mindset-for-frontend-developers.html.js").then(({ data }) => data),
   // path: /posts/how-to-create-a-simple-todolist-with-fastapi.html
