@@ -9,6 +9,8 @@ export const pagesComponents = {
   "v-1a48e06b": defineAsyncComponent(() => import(/* webpackChunkName: "v-1a48e06b" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/aws-build-a-simple-infrastructure.html.vue")),
   // path: /posts/aws-introduction.html
   "v-4675065a": defineAsyncComponent(() => import(/* webpackChunkName: "v-4675065a" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/aws-introduction.html.vue")),
+  // path: /posts/aws-lambda-sqs.html
+  "v-ca65d0f6": defineAsyncComponent(() => import(/* webpackChunkName: "v-ca65d0f6" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/aws-lambda-sqs.html.vue")),
   // path: /posts/aws-tips.html
   "v-160dd8fc": defineAsyncComponent(() => import(/* webpackChunkName: "v-160dd8fc" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/aws-tips.html.vue")),
   // path: /posts/essential-mindset-for-frontend-developers.html
