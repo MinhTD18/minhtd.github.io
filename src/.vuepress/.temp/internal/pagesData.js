@@ -17,6 +17,8 @@ export const pagesData = {
   "v-34003d17": () => import(/* webpackChunkName: "v-34003d17" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/how-to-create-a-simple-todolist-with-fastapi.html.js").then(({ data }) => data),
   // path: /posts/moving-a-git-branch-to-a-new-base.html
   "v-1c936a17": () => import(/* webpackChunkName: "v-1c936a17" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/moving-a-git-branch-to-a-new-base.html.js").then(({ data }) => data),
+  // path: /posts/nodejs-first-step.html
+  "v-2be73ce3": () => import(/* webpackChunkName: "v-2be73ce3" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/nodejs-first-step.html.js").then(({ data }) => data),
   // path: /posts/python-custom-formatting.html
   "v-0e271f74": () => import(/* webpackChunkName: "v-0e271f74" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/python-custom-formatting.html.js").then(({ data }) => data),
   // path: /posts/python-developer-career-path.html
@@ -47,4 +49,6 @@ export const pagesData = {
   "v-72723002": () => import(/* webpackChunkName: "v-72723002" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/tag/fastapi/index.html.js").then(({ data }) => data),
   // path: /tag/git/
   "v-b310d42a": () => import(/* webpackChunkName: "v-b310d42a" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/tag/git/index.html.js").then(({ data }) => data),
+  // path: /tag/nodejs/
+  "v-721080b6": () => import(/* webpackChunkName: "v-721080b6" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/tag/nodejs/index.html.js").then(({ data }) => data),
 }

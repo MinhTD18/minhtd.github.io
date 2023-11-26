@@ -11,7 +11,12 @@ export const enNavbar = navbar([
       {
         text: "Articles", icon: "article", children: [
           {
-            text: "AWS Lambda and AWS SQS A Powerful Combination ",
+            text: "Node.js A Comprehensive Beginner's Guide with an Example App",
+            icon: "read",
+            link: "nodejs-first-step.html",
+          },
+          {
+            text: "AWS Lambda and AWS SQS A Powerful Combination",
             icon: "read",
             link: "aws-lambda-sqs.html",
           },

@@ -19,6 +19,8 @@ export const pagesComponents = {
   "v-34003d17": defineAsyncComponent(() => import(/* webpackChunkName: "v-34003d17" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/how-to-create-a-simple-todolist-with-fastapi.html.vue")),
   // path: /posts/moving-a-git-branch-to-a-new-base.html
   "v-1c936a17": defineAsyncComponent(() => import(/* webpackChunkName: "v-1c936a17" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/moving-a-git-branch-to-a-new-base.html.vue")),
+  // path: /posts/nodejs-first-step.html
+  "v-2be73ce3": defineAsyncComponent(() => import(/* webpackChunkName: "v-2be73ce3" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/nodejs-first-step.html.vue")),
   // path: /posts/python-custom-formatting.html
   "v-0e271f74": defineAsyncComponent(() => import(/* webpackChunkName: "v-0e271f74" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/posts/python-custom-formatting.html.vue")),
   // path: /posts/python-developer-career-path.html
@@ -49,4 +51,6 @@ export const pagesComponents = {
   "v-72723002": defineAsyncComponent(() => import(/* webpackChunkName: "v-72723002" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/tag/fastapi/index.html.vue")),
   // path: /tag/git/
   "v-b310d42a": defineAsyncComponent(() => import(/* webpackChunkName: "v-b310d42a" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/tag/git/index.html.vue")),
+  // path: /tag/nodejs/
+  "v-721080b6": defineAsyncComponent(() => import(/* webpackChunkName: "v-721080b6" */"/workspaces/minhtd18.github.io/src/.vuepress/.temp/pages/tag/nodejs/index.html.vue")),
 }
