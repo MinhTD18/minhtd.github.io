@@ -11,7 +11,7 @@ export const enNavbar = navbar([
       {
         text: "Articles", icon: "article", children: [
           {
-            text: "Node.js A Comprehensive Beginner's Guide with an Example App",
+            text: "Building a Basic Node.js Project",
             icon: "read",
             link: "nodejs-first-step.html",
           },
